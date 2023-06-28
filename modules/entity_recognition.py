@@ -9,7 +9,6 @@ Objetivo: Este script é um módulo que serve para o Reconhecimento
           Python.
 Versão: 1.0.0
 Data: 23/06/2023
-Autor: Dr.Eddy Giusepe
 """
 import spacy
 
@@ -29,3 +28,4 @@ class EntityRecognizer:
             })
         
         return entities
+    
