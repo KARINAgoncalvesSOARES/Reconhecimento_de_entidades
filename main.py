@@ -3,13 +3,14 @@ Data Scientist Jr.: Karina Gonçalves Soares
 
 main.py
 =======
-Objetivo: Este script ativa o FastAPI e faze um Reconhecimento 
+Objetivo: Este script ativa o FastAPI e faz um Reconhecimento 
           de Entidades Nomeadas (NER) através do uso de um modelo
           pré-treinado do spaCy.
 Versão: 1.0.0
 Data: 23/06/2023
 Método de execução:
                    $ uvicorn main:app --reload
+                        OU
                    $ python main.py 
 """
 from fastapi import FastAPI
