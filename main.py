@@ -15,11 +15,11 @@ Método de execução:
 """
 from fastapi import FastAPI
 from modules.entity_recognition import EntityRecognizer
+from pydantic import BaseModel
 
 app = FastAPI(title='🤗 Usando FastAPI para o NER com spaCy 🤗',
               version='1.0',
-              description="""Agradecimentos ao Data Scientist e PhD. Eddy Giusepe Chirinos Isidro por disponibilizar o projeto.\n
-               Projeto end-to-end para a Extração de Entidades Nomeadas""")
+              description="""Projeto end-to-end para a Extração de Entidades Nomeadas""")
 entity_recognizer = EntityRecognizer()
 
 """
@@ -32,9 +32,12 @@ geralmente usado para recuperar informações do servidor, sem fazer alteraçõe
 #     entities = entity_recognizer.recognize_entities(query)
 #     return {"entities": entities}
 
+class QueryRequest(BaseModel):
+    query: str
+
 @app.post("/analyze") # O método POST é comumente usado para enviar dados para o servidor, o que se encaixa com nossa intenção de enviar uma query para ser processada.
-def analyze_query(query: str):
-    entities = entity_recognizer.recognize_entities(query)
+def analyze_query(query: QueryRequest):
+    entities = entity_recognizer.recognize_entities(query.query)
     return {"entities": entities}
 
 
